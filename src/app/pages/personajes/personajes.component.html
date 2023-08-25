@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <h1>Buscar</h1>
+        <input type="text" #termino (keyup)="getBusqueda(termino.value)" class="form-control">
+    </div>
+    <div class="row row-cols-4 row-cols-md-4 g-4" style="padding-top: 20px;">
+        <div class="col animate__animated animate__backInLeft" *ngFor="let personaje of personajes">
+            <div class="card">
+                <img [src]="personaje.image" class="card-img-top" [alt]="personaje.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{personaje.name}}</h5>
+                    <p class="card-text">
+                        <strong>Estado:</strong> {{personaje.status}}
+                    </p>
+                    <a data-bs-toggle="modal" class="btn btn-outline-primary btn-block" (click)="verMax(personaje)" data-bs-target="#personajes">
+              Ver mas
+            </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="text-center center" *ngIf="termino.value.length===0">
+            <ul class="pagination text-center">
+                <li class="page-item">
+                    <button type="button" class="page-link" [disabled]="disabledPrev" (click)="Pagina(-1)">Previous</button>
+                </li>
+
+                <li class="page-item">
+                    <button type="button" class="page-link" [disabled]="disabledNext" (click)="Pagina(+1)">Next</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="personajes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content" id="modal">
+
+            <div class="modal-body">
+                <h1>{{personaje?.name}}</h1>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <h3>Especie</h3>
+                        <p>{{personaje?.species}}</p>
+                    </div>
+                    <div class="col">
+                        <h3>Tipo</h3>
+                        <p>{{personaje?.type}}</p>
+                    </div>
+                    <div class="col">
+                        <h3>Genero</h3>
+                        <p>{{personaje?.gender}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>Origen</h3>
+                        <p>{{personaje?.origin.name}}</p>
+                    </div>
+                    <div class="col">
+                        <h3>Ubicacion</h3>
+                        <p>{{personaje?.location.name}}</p>
+                    </div>
+                    <div class="col">
+                        <h3>N° Episodios</h3>
+                        <p>{{personaje?.episode.length}}</p>
+                    </div>
+                </div>
+                <div class="position">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

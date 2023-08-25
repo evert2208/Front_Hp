@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #272b33;
+    color: white;
+}
+
+.navbar-nav {
+    color: white;
+    text-align: center;
+}
+
+#navbarSupportedContent {
+    color: white;
+}
+
+.nav-item {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
